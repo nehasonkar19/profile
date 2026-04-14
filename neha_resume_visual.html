@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neha Sonkar - Visual Resume</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 9pt;
+            line-height: 1.4;
+            color: #333;
+        }
+
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        .page {
+            width: 210mm;
+            height: 297mm;
+            position: relative;
+            overflow: hidden;
+            page-break-after: always;
+        }
+
+        .page:last-child {
+            page-break-after: auto;
+        }
+
+        /* Page 1 - Visual Header + Skills */
+        .page1 {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+        }
+
+        .header-visual {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 45%;
+            background: linear-gradient(135deg, #c9a227 0%, #d4af37 50%, #b8941f 100%);
+            clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+        }
+
+        .profile-circle {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .profile-initials {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 36pt;
+            font-weight: 800;
+            color: #1a1a2e;
+        }
+
+        .name-visual {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 32pt;
+            font-weight: 700;
+            color: #1a1a2e;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .title-visual {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 11pt;
+            font-weight: 500;
+            color: #1a1a2e;
+            letter-spacing: 2px;
+            margin-top: 8px;
+            text-align: center;
+        }
+
+        .contact-visual {
+            margin-top: 20px;
+            text-align: center;
+            color: #1a1a2e;
+            font-size: 9pt;
+            line-height: 1.8;
+        }
+
+        .stats-section {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 60%;
+            padding: 80px 40px 40px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-content: flex-start;
+        }
+
+        .stat-box {
+            text-align: center;
+            margin: 15px;
+        }
+
+        .stat-number {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 36pt;
+            font-weight: 700;
+            color: #c9a227;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 8pt;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 5px;
+        }
+
+        .skills-cloud {
+            width: 100%;
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .skills-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 10pt;
+            font-weight: 600;
+            color: #c9a227;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        .skill-tag {
+            display: inline-block;
+            padding: 5px 12px;
+            margin: 4px;
+            background: rgba(201, 162, 39, 0.2);
+            border: 1px solid #c9a227;
+            border-radius: 20px;
+            color: #fff;
+            font-size: 8pt;
+        }
+
+        /* Page 2 - Experience Timeline */
+        .page2 {
+            background: #fff;
+            padding: 30px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .section-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #c9a227, #d4af37);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: #fff;
+            font-size: 16pt;
+        }
+
+        .section-title-visual {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 16pt;
+            font-weight: 700;
+            color: #1a1a2e;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, #c9a227, #d4af37);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 20px;
+            padding-left: 20px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -26px;
+            top: 3px;
+            width: 14px;
+            height: 14px;
+            background: #c9a227;
+            border-radius: 50%;
+            border: 3px solid #fff;
+            box-shadow: 0 0 0 2px #c9a227;
+        }
+
+        .timeline-date {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 8pt;
+            font-weight: 600;
+            color: #c9a227;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .timeline-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 11pt;
+            font-weight: 600;
+            color: #1a1a2e;
+            margin: 3px 0;
+        }
+
+        .timeline-company {
+            font-size: 9pt;
+            color: #666;
+            margin-bottom: 8px;
+        }
+
+        .timeline-desc {
+            font-size: 8.5pt;
+            color: #555;
+            line-height: 1.5;
+        }
+
+        .achievement-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #c9a227, #d4af37);
+            color: #fff;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 7.5pt;
+            font-weight: 600;
+            margin-top: 8px;
+        }
+
+        /* Page 3 - Skills & Education */
+        .page3 {
+            background: linear-gradient(180deg, #f8f9fa 0%, #fff 100%);
+            padding: 30px;
+        }
+
+        .two-column {
+            display: flex;
+            gap: 30px;
+        }
+
+        .column {
+            flex: 1;
+        }
+
+        .skill-bar-container {
+            margin-bottom: 12px;
+        }
+
+        .skill-bar-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 8.5pt;
+            margin-bottom: 4px;
+        }
+
+        .skill-bar-name {
+            font-weight: 600;
+            color: #1a1a2e;
+        }
+
+        .skill-bar-level {
+            color: #c9a227;
+            font-weight: 600;
+        }
+
+        .skill-bar {
+            height: 8px;
+            background: #e9ecef;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .skill-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #c9a227, #d4af37);
+            border-radius: 4px;
+        }
+
+        .cert-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .cert-card {
+            background: #fff;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 12px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .cert-icon {
+            font-size: 18pt;
+            color: #c9a227;
+            margin-bottom: 5px;
+        }
+
+        .cert-name {
+            font-size: 7.5pt;
+            color: #1a1a2e;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        .education-card {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            border-radius: 10px;
+            padding: 20px;
+            color: #fff;
+            margin-bottom: 15px;
+        }
+
+        .edu-degree {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 11pt;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .edu-school {
+            font-size: 9pt;
+            color: #c9a227;
+        }
+
+        .tech-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .tech-item {
+            background: #1a1a2e;
+            color: #fff;
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 8pt;
+        }
+
+        .footer-visual {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #1a1a2e;
+            color: #fff;
+            padding: 15px 30px;
+            text-align: center;
+            font-size: 8pt;
+        }
+
+        .footer-visual span {
+            color: #c9a227;
+        }
+    </style>
+</head>
+<body>
+    <!-- Page 1: Visual Header & Stats -->
+    <div class="page page1">
+        <div class="header-visual">
+            <div class="profile-circle">
+                <span class="profile-initials">NS</span>
+            </div>
+            <h1 class="name-visual">Neha Sonkar</h1>
+            <p class="title-visual">Guest Experience Manager<br>Luxury Hospitality Specialist</p>
+            <div class="contact-visual">
+                Dubai, UAE | +971 55 215 8161<br>
+                nehasonkar19@gmail.com
+            </div>
+        </div>
+
+        <div class="stats-section">
+            <div class="stat-box">
+                <div class="stat-number">12+</div>
+                <div class="stat-label">Years Experience</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">500+</div>
+                <div class="stat-label">Rooms Managed</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">25+</div>
+                <div class="stat-label">Team Members Led</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">15+</div>
+                <div class="stat-label">Nationalities Managed</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">25%</div>
+                <div class="stat-label">Revenue Increase</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">20%</div>
+                <div class="stat-label">Turnover Reduction</div>
+            </div>
+
+            <div class="skills-cloud">
+                <div class="skills-title">Core Expertise</div>
+                <span class="skill-tag">Forbes Standards</span>
+                <span class="skill-tag">Guest Experience</span>
+                <span class="skill-tag">Team Leadership</span>
+                <span class="skill-tag">Revenue Optimization</span>
+                <span class="skill-tag">Service Recovery</span>
+                <span class="skill-tag">Opera PMS</span>
+                <span class="skill-tag">AI-Enhanced Service</span>
+                <span class="skill-tag">Cultural Competence</span>
+                <span class="skill-tag">VIP Relations</span>
+                <span class="skill-tag">Sustainability</span>
+                <span class="skill-tag">Crisis Management</span>
+                <span class="skill-tag">Digital Concierge</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 2: Experience Timeline -->
+    <div class="page page2">
+        <div class="section-header">
+            <div class="section-icon">★</div>
+            <h2 class="section-title-visual">Professional Experience</h2>
+        </div>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-date">April 2022 - Present</div>
+                <div class="timeline-title">Duty Manager - Guest Experience</div>
+                <div class="timeline-company">Habtoor Palace Dubai, LXR Hotels & Resorts | Dubai, UAE</div>
+                <div class="timeline-desc">
+                    Lead end-to-end Guest Experience operations for 500+ room ultra-luxury property. Drive hyper-personalization initiatives leveraging guest data analytics. Spearhead AI-enhanced service implementation including mobile concierge apps. Mentor and develop 25+ team members to meet Forbes Travel Guide standards.
+                </div>
+                <span class="achievement-badge">20% Turnover Reduction</span>
+                <span class="achievement-badge">TripAdvisor Ranking Improvement</span>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-date">June 2019 - April 2022</div>
+                <div class="timeline-title">Duty Manager - Guest Relations</div>
+                <div class="timeline-company">The Oberoi, Dubai | Dubai, UAE</div>
+                <div class="timeline-desc">
+                    Oversaw daily front office and guest relations operations for 252-room luxury property. Executed structured service recovery practices. Orchestrated cross-functional collaboration with Housekeeping, Concierge, Engineering, and F&B teams. Supported Revenue Management contributing to 3% RevPAR increase.
+                </div>
+                <span class="achievement-badge">15% Satisfaction Improvement</span>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-date">June 2015 - May 2019</div>
+                <div class="timeline-title">Reservations Supervisor</div>
+                <div class="timeline-company">The Oberoi, Dubai | Dubai, UAE</div>
+                <div class="timeline-desc">
+                    Supervised daily reservations operations for 15+ team members. Managed dynamic inventory, rate plans, and promotional offers. Conducted quality audits and ensured SOP compliance. Identified sales opportunities across corporate accounts and luxury travel advisors.
+                </div>
+                <span class="achievement-badge">25% Revenue Increase</span>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-date">October 2011 - May 2015</div>
+                <div class="timeline-title">Front Office Supervisor</div>
+                <div class="timeline-company">Ramada Gurgaon Central | Gurgaon, India</div>
+                <div class="timeline-desc">
+                    Supervised front desk operations for 120-room business hotel. Managed VIP arrivals, room allocations, and special requests. Maintained 100% accuracy in cash handling and personal bank balances.
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-date">September 2010 - October 2011</div>
+                <div class="timeline-title">Front Office & Reservations Assistant/Supervisor</div>
+                <div class="timeline-company">Golden Tulip & The Oberoi, Gurgaon | India</div>
+                <div class="timeline-desc">
+                    Supported front office and reservations operations for dual-property role. Managed online and telephone reservations with 95%+ first-contact resolution rate.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 3: Skills & Education -->
+    <div class="page page3">
+        <div class="two-column">
+            <div class="column">
+                <div class="section-header">
+                    <div class="section-icon">◆</div>
+                    <h2 class="section-title-visual">Technical Skills</h2>
+                </div>
+
+                <div class="skill-bar-container">
+                    <div class="skill-bar-label">
+                        <span class="skill-bar-name">Opera PMS</span>
+                        <span class="skill-bar-level">Expert</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-bar-fill" style="width: 95%;"></div>
+                    </div>
+                </div>
+
+                <div class="skill-bar-container">
+                    <div class="skill-bar-label">
+                        <span class="skill-bar-name">Revenue Management (FPG/NOR1)</span>
+                        <span class="skill-bar-level">Advanced</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-bar-fill" style="width: 90%;"></div>
+                    </div>
+                </div>
+
+                <div class="skill-bar-container">
+                    <div class="skill-bar-label">
+                        <span class="skill-bar-name">Guest Experience Technology</span>
+                        <span class="skill-bar-level">Advanced</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-bar-fill" style="width: 88%;"></div>
+                    </div>
+                </div>
+
+                <div class="skill-bar-container">
+                    <div class="skill-bar-label">
+                        <span class="skill-bar-name">Team Leadership</span>
+                        <span class="skill-bar-level">Expert</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-bar-fill" style="width: 92%;"></div>
+                    </div>
+                </div>
+
+                <div class="skill-bar-container">
+                    <div class="skill-bar-label">
+                        <span class="skill-bar-name">Data Analytics</span>
+                        <span class="skill-bar-level">Proficient</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-bar-fill" style="width: 80%;"></div>
+                    </div>
+                </div>
+
+                <div class="section-header" style="margin-top: 25px;">
+                    <div class="section-icon">●</div>
+                    <h2 class="section-title-visual">Certifications</h2>
+                </div>
+
+                <div class="cert-grid">
+                    <div class="cert-card">
+                        <div class="cert-icon">★</div>
+                        <div class="cert-name">Forbes Travel Guide Standards</div>
+                    </div>
+                    <div class="cert-card">
+                        <div class="cert-icon">★</div>
+                        <div class="cert-name">Crisis Management</div>
+                    </div>
+                    <div class="cert-card">
+                        <div class="cert-icon">★</div>
+                        <div class="cert-name">Sustainability in Hospitality</div>
+                    </div>
+                    <div class="cert-card">
+                        <div class="cert-icon">★</div>
+                        <div class="cert-name">AI in Hospitality</div>
+                    </div>
+                    <div class="cert-card">
+                        <div class="cert-icon">★</div>
+                        <div class="cert-name">Cultural Competence</div>
+                    </div>
+                    <div class="cert-card">
+                        <div class="cert-icon">★</div>
+                        <div class="cert-name">Digital Guest Experience</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="section-header">
+                    <div class="section-icon">▲</div>
+                    <h2 class="section-title-visual">Education</h2>
+                </div>
+
+                <div class="education-card">
+                    <div class="edu-degree">Bachelor's in Hotel Management & Catering Technology</div>
+                    <div class="edu-school">AIECT University | India</div>
+                </div>
+
+                <div class="education-card">
+                    <div class="edu-degree">Cabin Crew Training & Aviation Hospitality</div>
+                    <div class="edu-school">Frankfinn Management Consultants</div>
+                </div>
+
+                <div class="section-header" style="margin-top: 25px;">
+                    <div class="section-icon">■</div>
+                    <h2 class="section-title-visual">Technologies</h2>
+                </div>
+
+                <div class="tech-grid">
+                    <span class="tech-item">Opera PMS</span>
+                    <span class="tech-item">Hotlync</span>
+                    <span class="tech-item">Ingauge</span>
+                    <span class="tech-item">Fidelio</span>
+                    <span class="tech-item">FPG Platform</span>
+                    <span class="tech-item">NOR1</span>
+                    <span class="tech-item">RateTiger</span>
+                    <span class="tech-item">Mobile Check-in</span>
+                    <span class="tech-item">Digital Concierge</span>
+                    <span class="tech-item">AI Profiling</span>
+                    <span class="tech-item">MS Excel</span>
+                    <span class="tech-item">Analytics Tools</span>
+                </div>
+
+                <div class="section-header" style="margin-top: 25px;">
+                    <div class="section-icon">◆</div>
+                    <h2 class="section-title-visual">Languages</h2>
+                </div>
+
+                <div class="skill-bar-container">
+                    <div class="skill-bar-label">
+                        <span class="skill-bar-name">English</span>
+                        <span class="skill-bar-level">Fluent Professional</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-bar-fill" style="width: 95%;"></div>
+                    </div>
+                </div>
+
+                <div class="skill-bar-container">
+                    <div class="skill-bar-label">
+                        <span class="skill-bar-name">Hindi</span>
+                        <span class="skill-bar-level">Native</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-bar-fill" style="width: 100%;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-visual">
+            <span>References Available Upon Request</span> | Portfolio of Guest Experience Initiatives Available | Dubai, UAE
+        </div>
+    </div>
+</body>
+</html>
